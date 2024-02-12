@@ -4,11 +4,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import Box from '@mui/material/Box';
 
-export default function ProductTile() {
+
+export default function ProductTile(props) {
     var price = 22
   return (
-    <Card sx={{ maxWidth: 345, margin:5}}>
+    <Card sx={{ maxWidth: 345, margin:5, padding: 3}}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -28,6 +30,16 @@ export default function ProductTile() {
             species, ranging across all continents except Antarctica
           </Typography>
         </CardContent>
+        {props.data.role === 'home' ?
+        <Box>
+          <Button variant="contained">add To  Cart</Button>
+        </Box>
+        :
+        <Box>
+          <Button variant="contained" sx={{margin: 2}}>edit</Button>
+          <Button variant="contained">delete</Button>
+        </Box>
+        }
       </CardActionArea>
     </Card>
   );

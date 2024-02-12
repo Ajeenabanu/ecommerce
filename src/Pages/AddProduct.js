@@ -1,16 +1,16 @@
 import React from 'react'
 import Header from "../Components/Header/Header"
-import ProductTile from "../Components/product/productTile"
 import Footer from "../Components/footer/footer"
+import ProductForm from "../Components/product/productForm"
 
-function Home() {
+function AddProduct() {
   return (
     <div>
-      <Header data={{role:"home"}}/>
-      <ProductTile data={{role:"home"}}/>
+      <Header data={{role:"addProduct"}}/>
+      <ProductForm/>
       <Footer/>
     </div>
   )
 }
 
-export default Home
+export default AddProduct

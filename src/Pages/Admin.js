@@ -3,14 +3,14 @@ import Header from "../Components/Header/Header"
 import ProductTile from "../Components/product/productTile"
 import Footer from "../Components/footer/footer"
 
-function Home() {
+function Admin() {
   return (
     <div>
-      <Header data={{role:"home"}}/>
-      <ProductTile data={{role:"home"}}/>
+      <Header data={{role:"admin"}}/>
+      <ProductTile data={{role:"admin"}}/>
       <Footer/>
     </div>
   )
 }
 
-export default Home
+export default Admin
