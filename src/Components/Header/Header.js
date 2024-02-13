@@ -81,7 +81,12 @@ export default function Header(props) {
   };
   const navigate = useNavigate();
   const goToAddProduct = (event) => {
-    navigate("/addProduct");
+    if (props.data.role === 'admin') {
+      navigate("/addProduct");
+    }
+    if (props.data.role === 'home') {
+      navigate("/productcart");
+    }
   };
 
   const menuId = "primary-search-account-menu";
@@ -184,6 +189,7 @@ export default function Header(props) {
               color="error"
             >
               {props.data.role === "admin" ? <FaPlus /> : <FaCartShopping /> }
+
             </Badge> : ''}
             </IconButton>
             <IconButton

@@ -10,21 +10,42 @@ import Grid from "@mui/material/Grid";
 import { useNavigate } from "react-router-dom";
 
 export default function ProductTile(props) {
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
  
   try {
-    useEffect(() => {
-      axios
-        .get("http://localhost:5000/api/home")
+    useEffect( () => {
+      if (props.data.role === 'cart') {
+        setProducts([]);
+        var storedProducts = JSON.parse(localStorage.getItem("products"));
+        for (var i in storedProducts) {
+          console.log(i)
+          axios
+        .post("http://localhost:5000/api/admin/getProductById",{id:storedProducts[i]})
         .then((res) => {
-          setProducts(res.data);
-          console.log(res.data);
+            res.data.image = 'http://localhost:5000/static/' + res.data.image 
+            setProducts(oldArray => [...oldArray,res.data] );
+            console.log(res.data)
         })
         .catch((err) => {
           console.log(err);
         });
+        }
+      } else {
+        console.log('banu');
+        setProducts([])
+        axios
+        .get("http://localhost:5000/api/home")
+        .then((res) => {
+          setProducts(res.data);
+          
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }
+      
     }, []);
   } catch (error) {
     console.log(error);
@@ -39,7 +60,7 @@ export default function ProductTile(props) {
     if (!products.includes(id)) {
       products.push(id);
     } else {
-      alert('product is already in car')
+      alert('product is already in cart');
     }
 
     localStorage.setItem("products", JSON.stringify(products));
