@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, createContext } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,6 +15,7 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+const UserContext = createContext();
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -179,7 +180,7 @@ export default function Header(props) {
               onClick={goToAddProduct}
             >
               {props.data.role === "admin" || props.data.role === "home" ? <Badge
-              badgeContent={props.data.role === "admin" ? "add_Product" : 2}
+              badgeContent={props.data.role === "admin" ? "add_Product" : props.data.productCount}
               color="error"
             >
               {props.data.role === "admin" ? <FaPlus /> : <FaCartShopping /> }

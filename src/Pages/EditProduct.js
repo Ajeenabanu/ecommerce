@@ -3,14 +3,14 @@ import Header from "../Components/Header/Header"
 import Footer from "../Components/footer/footer"
 import ProductForm from "../Components/product/productForm"
 
-function AddProduct() {
+function EditProduct() {
   return (
     <div>
-      <Header data={{role:"addProduct"}}/>
-      <ProductForm data={{role:"addProduct"}}/>
+      <Header data={{role:"editProduct"}}/>
+      <ProductForm data={{role:"editProduct"}}/>
       <Footer/>
     </div>
   )
 }
 
-export default AddProduct
+export default EditProduct
