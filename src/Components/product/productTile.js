@@ -39,7 +39,7 @@ export default function ProductTile(props) {
     if (!products.includes(id)) {
       products.push(id);
     } else {
-      alert('product is already in cart')
+      alert('product is already in car')
     }
 
     localStorage.setItem("products", JSON.stringify(products));
